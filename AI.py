@@ -18,7 +18,7 @@ class LoadGames:
     def openGame(self):
         games = []
         AImoves = []
-        f = open("games/game2.pgn")
+        f = open("PGN Files/game2.pgn")
         while True:
             game = chess.pgn.read_game(f)
             if game is not None:
@@ -42,7 +42,7 @@ class LoadGames:
     def promotionMoves(self):
         blackPromotion = []
         whitePromotion = []
-        f = open("games/repetition.pgn")
+        f = open("PGN Files/repetition.pgn")
         game = chess.pgn.read_game(f)
         for moves in game:
             blackpromote = (str(moves)).split("1=")
@@ -64,7 +64,7 @@ class LoadGames:
 class NeuralNetwork:
 
     def predict(self, arrays, amount):
-        model = tf.keras.models.load_model("EarlyPosition")
+        model = tf.keras.models.load_model("NeuralNetworks/PNN")
         predictions = model.predict(arrays)
         print(predictions)
         return predictions
